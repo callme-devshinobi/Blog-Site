@@ -11,6 +11,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { PostComponent } from './pages/post/post.component';
 import { routes } from './app.routes';
+import { AboutComponent } from './pages/about/about.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { CategoryPostsComponent } from './pages/category-posts/category-posts.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,9 @@ import { routes } from './app.routes';
     HomeComponent,
     CategoriesComponent,
     PostComponent,
+    AboutComponent,
+    ContactComponent,
+    CategoryPostsComponent,
   ],
   imports: [
     BrowserModule,

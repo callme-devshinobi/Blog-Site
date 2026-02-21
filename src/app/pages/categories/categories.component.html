@@ -11,7 +11,7 @@
           </div>
           <div class="category-body">
             <p>{{ cat.description }}</p>
-            <a routerLink="/" class="btn-view">View Posts</a>
+            <a [routerLink]="['/categories', cat.name]" class="btn-view">View Posts</a>
           </div>
         </div>
       </div>

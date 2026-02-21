@@ -50,10 +50,13 @@
 .subscribe-form {
   display: flex;
   gap: 6px;
+  align-items: stretch;
+  overflow: hidden;
 }
 
 .subscribe-form input {
   flex: 1;
+  min-width: 0;
   padding: 8px 10px;
   border: 1px solid #d1d5db;
   border-radius: 4px;
@@ -69,12 +72,15 @@
   background: #1a5dc8;
   color: #fff;
   border: none;
-  padding: 8px 14px;
+  padding: 8px 10px;
   border-radius: 4px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
+  flex-shrink: 0;
+  width: auto;
+  min-width: 0;
 }
 
 .btn-sub:hover {

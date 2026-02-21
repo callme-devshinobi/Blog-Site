@@ -1,0 +1,38 @@
+<div class="page-wrapper">
+    <main class="content-area">
+  
+      <div class="page-header">
+        <h1>{{ categoryName }}</h1>
+        <span class="post-count">{{ posts.length }} {{ posts.length === 1 ? 'post' : 'posts' }}</span>
+      </div>
+  
+      <!-- Posts found -->
+      <div class="posts-grid" *ngIf="posts.length > 0">
+        <a class="post-card" *ngFor="let post of posts" [routerLink]="['/post', post.id]">
+          <div class="post-img-wrap">
+            <img [src]="post.image" [alt]="post.title" />
+          </div>
+          <div class="post-body">
+            <span class="post-cat">{{ post.category }}</span>
+            <h3>{{ post.title }} {{ post.subtitle }}</h3>
+            <p>{{ post.excerpt }}</p>
+            <div class="post-footer">
+              <span class="post-date">{{ post.date }}</span>
+              <span class="read-more">Read More →</span>
+            </div>
+          </div>
+        </a>
+      </div>
+  
+      <!-- No posts found -->
+      <div class="empty-state" *ngIf="posts.length === 0">
+        <div class="empty-icon">📭</div>
+        <h2>No posts found</h2>
+        <p>There are no posts in the <strong>{{ categoryName }}</strong> category yet. Check back soon!</p>
+        <a routerLink="/categories" class="btn-back">Browse All Categories</a>
+      </div>
+  
+    </main>
+  
+    <app-sidebar [showPopular]="true"></app-sidebar>
+  </div>
