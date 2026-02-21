@@ -1,0 +1,73 @@
+<div class="page-wrapper" *ngIf="post">
+  <main class="content-area">
+    <!-- Post Header -->
+    <h1 class="post-title">{{ post.title }} {{ post.subtitle }}</h1>
+
+    <div class="post-meta">
+      <img [src]="post.authorAvatar" [alt]="post.author" class="author-avatar" />
+      <a href="#" class="author-name">{{ post.author }}</a>
+      <span class="meta-sep">|</span>
+      <span>{{ post.date }}</span>
+      <span class="meta-sep">|</span>
+      <span>{{ post.readTime }} read</span>
+      <span class="meta-sep">|</span>
+      <a routerLink="/categories" class="post-cat">{{ post.category }}</a>
+      <div class="meta-social">
+        <a href="#" class="social-icon fb">
+          <svg viewBox="0 0 24 24" fill="white" width="12" height="12"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="#" class="social-icon tw">
+          <svg viewBox="0 0 24 24" fill="white" width="12" height="12"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+        </a>
+        <a href="#" class="social-icon gp">
+          <svg viewBox="0 0 24 24" fill="white" width="12" height="12"><path d="M12.545 10.239v3.821h5.445c-.712 2.315-2.647 3.972-5.445 3.972a6.033 6.033 0 110-12.064 5.96 5.96 0 014.123 1.608l2.834-2.835A9.969 9.969 0 0012.545 2C7.021 2 2.543 6.477 2.543 12s4.478 10 10.002 10c8.396 0 10.249-7.85 9.426-11.748l-9.426-.013z"/></svg>
+        </a>
+        <a href="#" class="social-icon em">
+          <svg viewBox="0 0 24 24" fill="white" width="12" height="12"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6" fill="none" stroke="white" stroke-width="2"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Featured Image -->
+    <img [src]="post.image" [alt]="post.title" class="hero-img" />
+
+    <!-- Post Content -->
+    <div class="post-content" [innerHTML]="post.content || ('<p>' + post.excerpt + '</p>')"></div>
+
+    <!-- Newsletter Inline -->
+    <div class="newsletter-inline">
+      <p>Subscribe to our <strong>newsletter</strong></p>
+      <p style="font-size:13px;color:#555;margin:4px 0 10px;">Stay up to date! Get the latest articles directly in your inbox.</p>
+      <div class="nl-form">
+        <input type="email" placeholder="Your email address" />
+        <button>Subscribe</button>
+      </div>
+    </div>
+
+    <!-- Tags -->
+    <div class="tags-row" *ngIf="post.tags && post.tags.length">
+      <strong>Tags</strong>
+      <span class="tag" *ngFor="let tag of post.tags">{{ tag }}</span>
+    </div>
+
+    <!-- Comment Form -->
+    <div class="comment-section">
+      <h3>Leave a Comment</h3>
+      <p style="font-size:13px;color:#666;margin:0 0 14px 0;">Share your thoughts about this post!</p>
+      <form class="comment-form" (ngSubmit)="submitComment()">
+        <input type="text" [(ngModel)]="comment.name" name="name" placeholder="Name" />
+        <input type="email" [(ngModel)]="comment.email" name="email" placeholder="Email" />
+        <input type="url" [(ngModel)]="comment.website" name="website" placeholder="Website" />
+        <textarea [(ngModel)]="comment.comment" name="comment" placeholder="Comment" rows="5"></textarea>
+        <button type="submit" class="btn-post">Post Comment</button>
+      </form>
+    </div>
+  </main>
+
+  <app-sidebar [showPopular]="true"></app-sidebar>
+</div>
+
+<div class="not-found" *ngIf="!post">
+  <h2>Post not found</h2>
+  <a routerLink="/">Go Home</a>
+</div>

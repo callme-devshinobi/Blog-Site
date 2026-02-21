@@ -1,0 +1,59 @@
+<div class="page-wrapper">
+  <main class="content-area">
+    <!-- Hero Section -->
+    <div class="hero-grid">
+      <!-- Featured Post -->
+      <a [routerLink]="['/post', featuredPost.id]" class="featured-post">
+        <img [src]="featuredPost.image" [alt]="featuredPost.title" class="featured-img" />
+        <div class="featured-overlay">
+          <h1 class="featured-title">{{ featuredPost.title }}<br/>{{ featuredPost.subtitle }}</h1>
+          <p class="featured-excerpt">{{ featuredPost.excerpt }}</p>
+          <span class="btn-readmore">Read More</span>
+        </div>
+      </a>
+
+      <!-- Side Posts -->
+      <div class="side-posts">
+        <a *ngFor="let post of sidePosts" [routerLink]="['/post', post.id]" class="side-post">
+          <img [src]="post.image" [alt]="post.title" />
+          <div class="side-post-overlay">
+            <h3>{{ post.title }}<br/>{{ post.subtitle }}</h3>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Latest Posts -->
+    <section class="latest-section">
+      <div class="latest-header">
+        <h2>Latest Posts</h2>
+        <a routerLink="/categories" class="view-all">View All Posts &rsaquo;</a>
+      </div>
+
+      <!-- Top 3 posts (small cards) -->
+      <div class="posts-grid-3">
+        <a *ngFor="let post of latestPosts.slice(0,3)" [routerLink]="['/post', post.id]" class="post-card-sm">
+          <img [src]="post.image" [alt]="post.title" />
+          <div class="post-card-body">
+            <h4>{{ post.title }}<br/>{{ post.subtitle }}</h4>
+            <span class="post-date">{{ post.date }}</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Bottom 2 posts (larger) -->
+      <div class="posts-grid-2">
+        <a *ngFor="let post of latestPosts.slice(3,5)" [routerLink]="['/post', post.id]" class="post-card-lg">
+          <img [src]="post.image" [alt]="post.title" />
+          <div class="post-card-body">
+            <h3>{{ post.title }}<br/><span>{{ post.subtitle }}</span></h3>
+            <span class="post-date">{{ post.date }}</span>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Sidebar -->
+  <app-sidebar [showPopular]="true"></app-sidebar>
+</div>

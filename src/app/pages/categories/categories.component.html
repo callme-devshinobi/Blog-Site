@@ -1,0 +1,22 @@
+<div class="page-outer">
+  <h1 class="page-title">Categories</h1>
+
+  <div class="page-wrapper">
+    <main class="content-area">
+      <div class="categories-grid">
+        <div class="category-card" *ngFor="let cat of categories">
+          <div class="category-img-wrap">
+            <img [src]="cat.image" [alt]="cat.name" />
+            <div class="category-label">{{ cat.name }}</div>
+          </div>
+          <div class="category-body">
+            <p>{{ cat.description }}</p>
+            <a routerLink="/" class="btn-view">View Posts</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <app-sidebar [showPopular]="false"></app-sidebar>
+  </div>
+</div>

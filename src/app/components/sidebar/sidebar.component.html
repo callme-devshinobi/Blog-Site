@@ -1,0 +1,43 @@
+<aside class="sidebar">
+  <!-- About Me -->
+  <div class="widget about-widget">
+    <h3 class="widget-title">About Me</h3>
+    <div class="about-content">
+      <div class="about-text">
+        <p>Welcome to my blog! I'm Jane, a writer and explorer sharing my passion for travel, wellness, and lifestyle. Join me on the journey!</p>
+      </div>
+      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=90&h=90&q=80&fit=crop&crop=face" alt="Jane" class="about-avatar" />
+    </div>
+  </div>
+
+  <!-- Newsletter -->
+  <div class="widget">
+    <h3 class="widget-title">Subscribe to Newsletter</h3>
+    <p class="widget-desc">Get the latest updates and articles straight to your inbox!</p>
+    <div class="subscribe-form">
+      <input type="email" [(ngModel)]="email" placeholder="Your email address" />
+      <button class="btn-sub">Subscribe</button>
+    </div>
+  </div>
+
+  <!-- Categories -->
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <ul class="category-list">
+      <li *ngFor="let cat of categories">
+        <a routerLink="/categories">• {{ cat }}</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Popular Posts -->
+  <div class="widget" *ngIf="showPopular">
+    <h3 class="widget-title">Popular Posts</h3>
+    <div class="popular-list">
+      <div class="popular-item" *ngFor="let post of popularPosts">
+        <img [src]="post.image" [alt]="post.title" />
+        <a routerLink="/post/{{ post.id }}">{{ post.title }}</a>
+      </div>
+    </div>
+  </div>
+</aside>
